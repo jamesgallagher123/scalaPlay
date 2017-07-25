@@ -8,4 +8,52 @@ GET     /                           controllers.Application.index
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
-    
+# Have a URI that would after getting called by the browser would redirect you to some page of your choice
+GET     /redirect                   controllers.Application.redirect
+
+# Have a URIs for dynamic, static, default, set, optional values with corresponding methods and pages that
+# would have them displayed in a nice way
+# Dynamic
+GET     /dynamic/:string            controllers.Application.dynamic(string: String)
+
+# Static
+GET     /static                     controllers.Application.static
+
+# Default
+GET     /default                    controllers.Application.default(string ?= "Default")
+
+# Set
+GET     /set                        controllers.Application.set(string: String = "This is a set string!")
+
+# Optional
+GET     /optional                   controllers.Application.optional(string: Option[String])
+
+# Helpers
+GET     /helper1                    controllers.Application.helper1
+GET     /helper2                    controllers.Application.helper2
+GET     /helper3                    controllers.Application.helper3
+GET     /helper4                    controllers.Application.helper4
+GET     /helper5                    controllers.Application.helper5
+GET     /helper6                    controllers.Application.helper6
+
+# Reverse route
+GET     /hello/:name                controllers.Application.hello(name: String)
+GET     /helloJames                 controllers.Application.helloJames
+
+# TODO
+GET     /todo                       controllers.Application.todo
+
+# Have two routes that are the same but point to different Actions, which one will be called?
+GET     /sameRoute                  controllers.Application.sameRoute1
+GET     /sameRoute                  controllers.Application.sameRoute2
+
+# Test out default controller and see what results does it show for the supported methods
+GET     /google                     controllers.Default.redirect(to = "http://www.google.com")
+
+# Try to use cookies/session/flash scope for your Actions and figure out how to print them out onto the page 
+#   o	Change the cookie name
+#   o	Find a way to discard all of them
+
+GET     /createCookie               controllers.Application.createCookie
+GET     /viewCookie                 controllers.Application.viewCookie
+GET     /deleteCookie               controllers.Application.deleteCookie
